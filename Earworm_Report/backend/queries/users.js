@@ -13,17 +13,39 @@ const getAllUsers = (req,res)=>{
   })
 }
 
-// const getSingleUser = ()=>{
+const getSingleUser = (req,res)=>{
+  const id = req.params.id;
+  db.one('SELECT * FROM users WHERE id =$1',id)
+  .then(result=>{
+    res.status(200)
+    .json({
+      message: 'this is ONE user',
+      user:result
+    })
+  })
+}
 //
-// }
-//
-// const postNewUser=()=>{
-//
-// }
+const postNewUser=(req,res)=>{
+  db.none(
+    'INSERT INTO users (username) VALUES (${username})',
+    {username:req.body.username}
+  )
+  .then(()=>{
+    res.status(200).json({
+      message: 'Account created'
+    })
+  }).catch(err=>{
+    res.status(500).json({
+      message:err
+    })
+  })
+}
 //
 // const deleteUser=()=>{
 //
 // }
 module.exports={
-  getAllUsers
+  getAllUsers,
+  getSingleUser,
+  postNewUser
 }
