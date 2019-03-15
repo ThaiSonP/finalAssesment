@@ -91,10 +91,24 @@ const postSong = (req,res)=>{
   })
 }
 
+const deleteSong = (req,res)=>{
+  const songid = req.params.songid
+  db.none('DELETE from SONGS where songs.id=$1',[songid])
+  .then(results=>{
+    res.status(200)
+    .json({
+      message:'song deleted'
+    })
+  }).catch(err=>{
+    console.log(err)
+  })
+}
+
 module.exports={
   getAllSongs,
   getSongsByGenre,
   getSongsByUser,
   getOneSong,
-  postSong
+  postSong,
+  deleteSong
 }
