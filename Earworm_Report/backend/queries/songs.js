@@ -70,12 +70,31 @@ const getOneSong = (req,res)=>{
   }).catch(err=>{
     console.log(err)
   })
+}
 
+const postSong = (req,res)=>{
+  db.none(
+    'INSERT INTO songs (title, img_url, user_id, genre_id) '+
+    'VALUES (${title},${img_url},${user_id},${genre_id}) ',
+    {title:req.body.title,
+      img_url:req.body.img_url,
+      user_id:req.body.user_id,
+      genre_id:req.body.genre_id
+    }
+  )
+  .then(()=>{
+    res.status(200).json({
+      message: 'Song has been uploaded',
+    })
+  }).catch(err=>{
+    console.log(err)
+  })
 }
 
 module.exports={
   getAllSongs,
   getSongsByGenre,
   getSongsByUser,
-  getOneSong
+  getOneSong,
+  postSong
 }
