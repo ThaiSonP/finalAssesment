@@ -3,7 +3,7 @@ var router = express.Router();
 
 const db = require ('../queries/users')
 
-/* GET users listing. */
+// http://localhost:3009/users/
 router.get('/', db.getAllUsers)
 router.get('/:id',db.getSingleUser)
 router.post('/',db.postNewUser)
