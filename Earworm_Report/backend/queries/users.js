@@ -24,7 +24,7 @@ const getSingleUser = (req,res)=>{
     })
   })
 }
-//
+
 const postNewUser=(req,res)=>{
   db.none(
     'INSERT INTO users (username) VALUES (${username})',
@@ -40,12 +40,23 @@ const postNewUser=(req,res)=>{
     })
   })
 }
-//
-// const deleteUser=()=>{
-//
-// }
+
+const deleteUser=(req,res)=>{
+  const id=req.params.id
+  db.none('DELETE from users where id=$1',[id])
+  .then(results=>{
+    res.status(200)
+    .json({
+      message:'Account deleted'
+    })
+  }).catch(err=>{
+    console.log(err)
+  })
+}
+
 module.exports={
   getAllUsers,
   getSingleUser,
-  postNewUser
+  postNewUser,
+  deleteUser
 }

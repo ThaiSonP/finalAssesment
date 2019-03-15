@@ -7,5 +7,6 @@ const db = require ('../queries/users')
 router.get('/', db.getAllUsers)
 router.get('/:id',db.getSingleUser)
 router.post('/',db.postNewUser)
+router.delete('/:id',db.deleteUser)
 
 module.exports = router;
