@@ -1,12 +1,12 @@
 import React,{Component} from 'react'
 import axios from 'axios'
-
+import DisplaySongs from './DisplaySongs'
 
 class Popularity extends Component {
   constructor(props){
     super(props)
     this.state={
-      songs:null
+      songs:[]
     }
   }
 
@@ -24,7 +24,7 @@ class Popularity extends Component {
     console.log(songs)
     return(
       <div>
-        This is the Songs By Popularity Page
+        <DisplaySongs songs={songs}/>
       </div>
     )
   }

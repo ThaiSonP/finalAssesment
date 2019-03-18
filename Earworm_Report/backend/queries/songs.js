@@ -4,7 +4,7 @@ const getPopularSongs = (req,res)=>{
   db.any(
     'SELECT songs.id,songs.title,songs.img_url,songs.user_id,songs.genre_id, COUNT (favorites.song_id) '+
     'FROM songs '+
-    'JOIN favorites '+
+    'LEFT JOIN favorites '+
     'ON songs.id = favorites.song_id '+
     'GROUP BY songs.id,songs.title,songs.img_url,songs.user_id,songs.genre_id '+
     'ORDER BY count DESC '
