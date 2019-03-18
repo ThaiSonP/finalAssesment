@@ -2,7 +2,7 @@ import React from 'react'
 import {Link} from 'react-router-dom'
 import '../styling/DisplaySongs.css'
 import axios from 'axios'
-import DisplayComments from './DisplayComments'
+// import DisplayComments from './DisplayComments'
 
 export const DisplaySongs = (props)=>{
   const {songs}=props
@@ -41,7 +41,7 @@ export const DisplaySongs = (props)=>{
   return(
     <div>
       {DisplayFunction}
-      <DisplayComments comments={comments}/>
+      
     </div>
   )
   }
