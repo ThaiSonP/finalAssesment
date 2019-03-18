@@ -2,11 +2,15 @@ const db = require ('../database/index')
 
 const getPopularSongs = (req,res)=>{
   db.any(
-    'SELECT songs.id,songs.title,songs.img_url,songs.user_id,songs.genre_id, COUNT (favorites.song_id) '+
+    'SELECT songs.id, songs.title,songs.img_url,songs.user_id,genres.genre_name, USERs.username, COUNT (favorites.song_id) '+
     'FROM songs '+
+    'JOIN genres '+
+    'ON songs.genre_id = genres.id '+
+    'JOIN users '+
+    'ON songs.user_id = users.id '+
     'LEFT JOIN favorites '+
     'ON songs.id = favorites.song_id '+
-    'GROUP BY songs.id,songs.title,songs.img_url,songs.user_id,songs.genre_id '+
+    'GROUP BY songs.id, songs.title,songs.img_url,songs.user_id,genres.genre_name, USERs.username '+
     'ORDER BY count DESC '
   ).then(response=>{
     res.status(200)
