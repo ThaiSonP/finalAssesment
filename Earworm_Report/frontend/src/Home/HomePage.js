@@ -4,7 +4,9 @@ class HomePage extends Component {
   render (){
     return(
       <div>
-        This is the HomePage
+        <h1>
+          Earworm Report
+        </h1>
       </div>
     )
   }

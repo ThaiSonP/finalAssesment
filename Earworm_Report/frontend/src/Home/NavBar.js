@@ -7,10 +7,10 @@ export const NavBar =(props) => {
     return(
       <nav>
         <div>
-          <Link to='/'>Home</Link>
-          <Link to='/songs'>All Songs</Link>
-          <Link to='/songs/bypop'>By Popularity</Link>
-          <Link to='/songs/bygenre'>By Genre</Link>
+          <Link to='/'>Home</Link> [ ~ ]
+          <Link to='/songs'>All Songs</Link>[ ~ ]
+          <Link to='/songs/bypop'>By Popularity</Link>[ ~ ]
+          <Link to='/songs/bygenre'>By Genre</Link>[ ~ ]
           <Link to={`/user/${user_id}`}>My Profile</Link>
         </div>
       </nav>

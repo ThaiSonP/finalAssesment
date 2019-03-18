@@ -1,0 +1,9 @@
+.individualSong{
+  display: flex;
+  flex-direction: row
+}
+
+.individualSong img{
+  height: 160px;
+  width: 160px
+}

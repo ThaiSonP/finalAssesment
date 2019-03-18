@@ -25,9 +25,9 @@ class App extends Component {
         <Switch>
           <Route exact path= '/' component={HomePage}/>
           <Route exact path= '/songs' component={Songs}/>
-          <Route path = '/songs/:id' component={SingleSong}/>
           <Route exact path = '/songs/bypop' component={Popularity}/>
           <Route exact path = '/songs/genre' component={Genre}/>
+          <Route path = '/songs/:id' component={SingleSong}/>
           <Route path = '/user/:id' component={Profile}/>
         </Switch>
       </div>
