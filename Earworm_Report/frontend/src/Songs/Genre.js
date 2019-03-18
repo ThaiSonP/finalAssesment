@@ -2,6 +2,7 @@ import React,{Component} from 'react'
 import '../styling/Songs.css'
 import axios from 'axios'
 import DisplaySongs from './DisplaySongs'
+import GenreOptions from './GenreOptions'
 
 class Genre extends Component {
   constructor(props){
@@ -31,6 +32,12 @@ class Genre extends Component {
       console.log(this.state)
     return(
       <div className = 'songs'>
+        <form>
+          <select>
+            <option> </option>
+            <GenreOptions genres={genres}/>
+          </select>
+        </form>
         <p>This is the Songs By Genre Page</p>
         <DisplaySongs songs={songs}/>
       </div>

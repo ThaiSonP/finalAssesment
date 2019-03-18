@@ -2,21 +2,19 @@ import React from 'react'
 import {Link} from 'react-router-dom'
 import '../styling/DisplaySongs.css'
 import axios from 'axios'
-// import DisplayComments from './DisplayComments'
 
 export const DisplaySongs = (props)=>{
   const {songs}=props
   let comments = []
-  // console.log(songs)
 
   if(songs){
   const DisplayFunction = songs.map((el,i)=>{
 
-    comments =
-    axios.get(`/comments/song/${el.id}`)
-    .then(result=>{
-      console.log(result.data.comments)
-    })
+    // comments =
+    // axios.get(`/comments/song/${el.id}`)
+    // .then(result=>{
+    //   console.log(result.data.comments)
+    // })
     return(
 
       <div className ="individualSong" key={i}>
@@ -32,9 +30,7 @@ export const DisplaySongs = (props)=>{
             <Link to={`/genres/${el.genre_name}`}>{el.genre_name} <br/></Link>
             Favorites:{el.count}
           </p>
-
         </div>
-    
       </div>
     )
   })
@@ -42,10 +38,8 @@ export const DisplaySongs = (props)=>{
   return(
     <div>
       {DisplayFunction}
-
     </div>
-  )
-  }
+  )}
 }
 
 export default DisplaySongs
