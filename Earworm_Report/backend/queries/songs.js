@@ -21,12 +21,14 @@ const getPopularSongs = (req,res)=>{
 
 const getSongsByDate = (req,res)=>{
   db.any(
-    'SELECT songs.id, songs.title,songs.img_url,songs.user_id,genres.genre_name, USERs.username '+
+    'SELECT songs.id, songs.title,songs.img_url,songs.user_id,genres.genre_name, USERs.username, COUNT (favorites.song_id) '+
     'FROM songs '+
     'JOIN genres '+
     'ON songs.genre_id = genres.id '+
     'JOIN users '+
     'ON songs.user_id = users.id '+
+    'LEFT JOIN favorites '+
+    'ON songs.id = favorites.song_id '+
     'GROUP BY songs.id, songs.title,songs.img_url,songs.user_id,genres.genre_name, USERs.username '+
     'ORDER BY songs.id DESC '
   ).then(response=>{
