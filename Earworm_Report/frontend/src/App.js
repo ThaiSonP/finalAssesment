@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {Switch,Route} from 'react-router-dom'
+import './styling/App.css'
 
 import NavBar from './Home/NavBar'
 import Profile from './Home/Profile'

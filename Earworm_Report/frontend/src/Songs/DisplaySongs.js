@@ -1,5 +1,5 @@
 import React from 'react'
-import Link from 'react-router-dom'
+import {Link} from 'react-router-dom'
 import '../styling/DisplaySongs.css'
 
 export const DisplaySongs = (props)=>{
@@ -11,14 +11,16 @@ export const DisplaySongs = (props)=>{
     console.log(el)
     return(
       <div className ="individualSong" key={i}>
-        <div>
-          <img src={`${el.img_url}`} alt=''/><br/>
+        <div className = 'albumCover'>
+          <Link to={`/songs/${el.id}`}>
+            <img src={`${el.img_url}`} alt=''/><br/>
+          </Link>
         </div>
-        <div>
+        <div className= 'songDescription'>
           <p>
-            {el.username} <br/>
-            {el.title} <br/>
-            {el.genre_name} <br/>
+            <Link to={`/songs/${el.id}`}>{el.title} <br/></Link>
+            By: <Link to={`/user/${el.user_id}`}>{el.username} <br/></Link>
+            <Link to={`/genres/${el.genre_name}`}>{el.genre_name} <br/></Link>
             Favorites:{el.count}
           </p>
         </div>

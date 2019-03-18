@@ -3,7 +3,22 @@
   flex-direction: row
 }
 
-.individualSong img{
+.albumCover{
+  height: 200px;
+  width: 200px;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+.albumCover img{
   height: 160px;
   width: 160px
+}
+
+.songDescription{
+  height: 200px;
+  width: 200px;
+  display:flex;
+  justify-content: center;
+  align-items: center;
 }
