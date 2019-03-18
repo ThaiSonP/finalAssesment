@@ -1,6 +1,7 @@
 import React,{Component} from 'react'
 import axios from 'axios'
 import DisplaySongs from './DisplaySongs'
+import '../styling/Songs.css'
 
 class Songs extends Component {
   constructor(props){
@@ -22,8 +23,7 @@ class Songs extends Component {
     const {songs}=this.state
     // console.log(songs)
     return(
-      <div>
-
+      <div className = 'songs'>
         <DisplaySongs songs={songs}/>
       </div>
     )

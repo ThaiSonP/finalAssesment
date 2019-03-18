@@ -34,6 +34,7 @@ export const DisplaySongs = (props)=>{
           </p>
 
         </div>
+    
       </div>
     )
   })
@@ -41,7 +42,7 @@ export const DisplaySongs = (props)=>{
   return(
     <div>
       {DisplayFunction}
-      
+
     </div>
   )
   }

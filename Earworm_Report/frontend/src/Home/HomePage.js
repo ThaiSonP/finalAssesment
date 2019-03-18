@@ -1,9 +1,10 @@
 import React,{Component} from 'react'
+import '../styling/Songs.css'
 
 class HomePage extends Component {
   render (){
     return(
-      <div>
+      <div className = 'songs'>
         <h1>
           Earworm Report
         </h1>
