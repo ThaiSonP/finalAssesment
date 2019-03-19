@@ -112,7 +112,7 @@ const postSong = (req,res)=>{
     {title:req.body.title,
       img_url:req.body.img_url,
       user_id:req.body.user_id,
-      genre_id:req.body.genre_id
+      genre_id:parseInt(req.body.genre_id)
     }
   )
   .then(()=>{
