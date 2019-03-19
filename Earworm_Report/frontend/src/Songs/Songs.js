@@ -53,7 +53,7 @@ class Songs extends Component {
 
 
   render (){
-    const {songs,selected}=this.state
+    const {songs}=this.state
     console.log(this.state)
     return(
       <div className = 'songs'>

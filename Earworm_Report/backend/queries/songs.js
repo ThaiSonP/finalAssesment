@@ -25,7 +25,7 @@ const getPopularSongs = (req,res)=>{
 
 const getSongsByDate = (req,res)=>{
   db.any(
-    'SELECT songs.id, songs.title,songs.img_url,songs.user_id,genres.genre_name, USERs.username, COUNT (favorites.song_id) '+
+    'SELECT songs.id, songs.title,songs.genre_id,songs.img_url,songs.user_id,genres.genre_name, USERs.username, COUNT (favorites.song_id) '+
     'FROM songs '+
     'JOIN genres '+
     'ON songs.genre_id = genres.id '+
@@ -33,7 +33,7 @@ const getSongsByDate = (req,res)=>{
     'ON songs.user_id = users.id '+
     'LEFT JOIN favorites '+
     'ON songs.id = favorites.song_id '+
-    'GROUP BY songs.id, songs.title,songs.img_url,songs.user_id,genres.genre_name, USERs.username '+
+    'GROUP BY songs.id, songs.title,songs.genre_id,songs.img_url,songs.user_id,genres.genre_name, USERs.username '+
     'ORDER BY songs.id DESC '
   ).then(response=>{
     res.status(200)
@@ -49,11 +49,17 @@ const getSongsByDate = (req,res)=>{
 const getSongsByGenre = (req,res)=>{
   const genreId = req.params.genreId
   db.any(
-    'SELECT * '+
+    'SELECT songs.id, songs.title,songs.genre_id,songs.img_url,songs.user_id,genres.genre_name, USERs.username, COUNT (favorites.song_id) '+
     'FROM songs '+
     'JOIN genres '+
     'ON songs.genre_id = genres.id '+
-    'WHERE genres.id = $1 ',genreId
+    'JOIN users '+
+    'ON songs.user_id = users.id '+
+    'LEFT JOIN favorites '+
+    'ON songs.id = favorites.song_id '+
+    'WHERE genres.id = $1 '+
+    'GROUP BY songs.id, songs.title,songs.genre_id,songs.img_url,songs.user_id,genres.genre_name, USERs.username '
+    ,genreId
   )
   .then(results=>{
     res.status(200)

@@ -9,32 +9,70 @@ class Genre extends Component {
     super(props)
     this.state={
       genres:[],
-      songs:[]
+      songs:[],
+      selected:null
     }
   }
 
-  componentDidMount=()=>{
-    axios.get('/genres')
+  getGenres = ()=>{axios.get('/genres')
     .then(genres=>{
       this.setState({
         genres:genres.data.genres})
     })
-    axios.get('/songs')
+  }
+  getSongs=()=>{ axios.get('/songs/genres')
     .then(songs=>{
       this.setState({
         songs:songs.data.songs
       })
     })
   }
+    componentDidMount=()=>{
+      this.getGenres();
+      this.getSongs()
+  }
+
+  filterGenres = ()=>{
+    const {songs,selected}=this.state
+
+    if(selected){
+      const filteredSongs = songs.filter(el=>{
+        return(
+          parseInt(el.genre_id) === selected
+        )
+      })
+      this.setState({
+        songs:filteredSongs
+      })
+    }else{
+      this.getSongs()
+    }
+
+  }
+
+
+  handleChange = (e)=>{
+    const {selected}=this.state
+    this.setState({
+      selected:parseInt(e.target.value)
+    })
+    axios.get(`/songs/genres/${selected}`)
+    .then(thing=>{
+      this.setState({
+        songs:thing.data.songs
+      })
+    })
+    // this.filterGenres()
+  }
 
   render (){
     const{songs,genres}=this.state
-      console.log(this.state)
+      // console.log(this.state)
     return(
       <div className = 'songs'>
-        <form>
-          <select>
-            <option> </option>
+        <form onChange={this.handleChange} name='selected'>
+          <select >
+            <option value={null}> </option>
             <GenreOptions genres={genres}/>
           </select>
         </form>
