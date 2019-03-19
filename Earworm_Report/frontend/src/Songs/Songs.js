@@ -8,6 +8,7 @@ class Songs extends Component {
     super(props)
     this.state={
       songs:[],
+      filteredSongs:[],
       selected:''
     }
   }
@@ -16,7 +17,8 @@ class Songs extends Component {
     axios.get('/songs/')
     .then(result=>{
       this.setState({
-        songs:result.data.songs
+        songs:result.data.songs,
+        filteredSongs:result.data.songs
       })
     })
   }
@@ -38,7 +40,7 @@ class Songs extends Component {
         return(el.title.toLowerCase().includes(selected.toLowerCase()))
       })
       this.setState({
-        songs:selectedSongs,
+        filteredSongs:selectedSongs,
         selected: null
       })
     }else{
@@ -53,7 +55,7 @@ class Songs extends Component {
 
 
   render (){
-    const {songs}=this.state
+    const {filteredSongs}=this.state
     console.log(this.state)
     return(
       <div className = 'songs'>
@@ -61,7 +63,7 @@ class Songs extends Component {
           <input type='text'name='selected'/>
           <input type = "submit" />
         </form>
-        <DisplaySongs songs={songs}/>
+        <DisplaySongs songs={filteredSongs}/>
       </div>
     )
   }
