@@ -7,11 +7,12 @@ class Songs extends Component {
   constructor(props){
     super(props)
     this.state={
-      songs:[]
+      songs:[],
+      selected:''
     }
   }
 
-  componentDidMount =()=>{
+  getSongs=()=>{
     axios.get('/songs/')
     .then(result=>{
       this.setState({
@@ -19,11 +20,47 @@ class Songs extends Component {
       })
     })
   }
+  componentDidMount =()=>{
+    this.getSongs()
+  }
+
+  handleChange = (e)=>{
+    this.setState({
+      [e.target.name]:e.target.value
+    })
+  }
+
+  filterSongs = ()=>{
+    const{songs,selected} = this.state;
+
+    if(selected){
+      const selectedSongs = songs.filter(el=>{
+        return(el.title.toLowerCase().includes(selected.toLowerCase()))
+      })
+      this.setState({
+        songs:selectedSongs,
+        selected: null
+      })
+    }else{
+      this.getSongs()
+      }
+    }
+
+  handleSubmit=(e)=>{
+    e.preventDefault();
+    this.filterSongs()
+  }
+
+
   render (){
-    const {songs}=this.state
-    // console.log(songs)
+    const {songs,selected}=this.state
+    console.log(this.state)
     return(
       <div className = 'songs'>
+        <form onChange={this.handleChange} onSubmit={this.handleSubmit}>
+          <input type='text'name='selected'/>
+          <input type = "submit" />
+        </form>
         <DisplaySongs songs={songs}/>
       </div>
     )
