@@ -32,18 +32,23 @@ class Genre extends Component {
       this.getSongs()
   }
 
-
-  handleChange = (e)=>{
+  filterSongs = async ()=>{
     const {selected}=this.state
-    this.setState({
+    await axios.get(`/songs/genres/${selected}`)
+        .then(thing=>{
+          this.setState({
+            songs:thing.data.songs
+          })
+        })
+  }
+
+  handleChange = async (e)=>{
+
+    await this.setState({
       selected:parseInt(e.target.value)
     })
-    axios.get(`/songs/genres/${selected}`)
-    .then(thing=>{
-      this.setState({
-        songs:thing.data.songs
-      })
-    })
+
+    this.filterSongs()
   }
 
   render (){
@@ -57,7 +62,6 @@ class Genre extends Component {
             <GenreOptions genres={genres}/>
           </select>
         </form>
-        <p>This is the Songs By Genre Page</p>
         <DisplaySongs songs={songs}/>
       </div>
     )
