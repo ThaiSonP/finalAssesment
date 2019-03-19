@@ -32,24 +32,6 @@ class Genre extends Component {
       this.getSongs()
   }
 
-  filterGenres = ()=>{
-    const {songs,selected}=this.state
-
-    if(selected){
-      const filteredSongs = songs.filter(el=>{
-        return(
-          parseInt(el.genre_id) === selected
-        )
-      })
-      this.setState({
-        songs:filteredSongs
-      })
-    }else{
-      this.getSongs()
-    }
-
-  }
-
 
   handleChange = (e)=>{
     const {selected}=this.state
@@ -62,7 +44,6 @@ class Genre extends Component {
         songs:thing.data.songs
       })
     })
-    // this.filterGenres()
   }
 
   render (){
