@@ -1,18 +1,22 @@
 import React,{Component} from 'react'
+import PostSongs from './PostSongs'
 
 class Profile extends Component {
   constructor(props){
     super(props)
     this.state={
-      user_id:props.user,
+      loggedInUser:props.user,
       currentUser:+props.match.params.id
     }
   }
   render (){
-    console.log(this.state)
+    const{loggedInUser,currentUser}=this.state
+    // console.log(this.state)
+
     return(
       <div>
         This is the Profile Page
+        <PostSongs loggedInUser={loggedInUser}currentUser={currentUser}/>
       </div>
     )
   }

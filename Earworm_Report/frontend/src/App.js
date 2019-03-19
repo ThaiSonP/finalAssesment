@@ -15,14 +15,14 @@ class App extends Component {
   constructor(props){
   super(props)
   this.state={
-    user_id:1
+    loggedInUser:1
   }
 }
   render() {
-    const{user_id}=this.state
+    const{loggedInUser}=this.state
     return (
       <div className="App">
-        <NavBar user_id={user_id}/>
+        <NavBar loggedInUser={loggedInUser}/>
         <Switch>
           <Route exact path= '/' component={HomePage}/>
           <Route exact path= '/songs' component={Songs}/>
@@ -30,7 +30,7 @@ class App extends Component {
           <Route exact path = '/songs/bygenre' component={Genre}/>
           <Route path = '/songs/:id' component={SingleSong}/>
           <Route path = '/user/:id'
-            render={(props) => <Profile{...props} user={user_id}/>}
+            render={(props) => <Profile{...props} user={loggedInUser}/>}
             />
         </Switch>
       </div>

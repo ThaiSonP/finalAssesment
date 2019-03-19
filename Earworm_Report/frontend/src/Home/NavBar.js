@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom'
 import '../styling/NavBar.css'
 
 export const NavBar =(props) => {
-  const {user_id}=props
+  const {loggedInUser}=props
 
     return(
       <nav>
@@ -20,7 +20,7 @@ export const NavBar =(props) => {
             <Link to='/songs'>All Songs</Link>
             <Link to='/songs/bypop'>By Popularity</Link>
             <Link to='/songs/bygenre'>By Genre</Link>
-            <Link to={`/user/${user_id}`}>My Profile</Link>
+            <Link to={`/user/${loggedInUser}`}>My Profile</Link>
           </div>
         </div>
       </nav>
