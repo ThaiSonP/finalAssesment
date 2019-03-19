@@ -29,7 +29,9 @@ class App extends Component {
           <Route exact path = '/songs/bypop' component={Popularity}/>
           <Route exact path = '/songs/bygenre' component={Genre}/>
           <Route path = '/songs/:id' component={SingleSong}/>
-          <Route path = '/user/:id' component={Profile}/>
+          <Route path = '/user/:id'
+            render={(props) => <Profile{...props} user={user_id}/>}
+            />
         </Switch>
       </div>
     );
