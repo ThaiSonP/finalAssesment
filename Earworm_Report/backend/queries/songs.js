@@ -75,7 +75,17 @@ const getSongsByGenre = (req,res)=>{
 const getSongsByUser = (req,res)=>{
   const userId = req.params.userId
   db.any(
-    'SELECT * FROM songs WHERE user_id=$1',userId
+    'SELECT songs.id, songs.title,songs.genre_id,songs.img_url,songs.user_id,genres.genre_name, USERs.username, COUNT (favorites.song_id) '+
+    'FROM songs '+
+    'JOIN genres '+
+    'ON songs.genre_id = genres.id '+
+    'JOIN users '+
+    'ON songs.user_id = users.id '+
+    'LEFT JOIN favorites '+
+    'ON songs.id = favorites.song_id '+
+    'WHERE songs.user_id = $1 ' +
+    'GROUP BY songs.id, songs.title,songs.genre_id,songs.img_url,songs.user_id,genres.genre_name, USERs.username '+
+    'ORDER BY songs.id DESC ',userId
   )
   .then(results=>{
     res.status(200)
