@@ -26,10 +26,11 @@ class CommentSection extends Component{
   }
 
   render(){
-    console.log(this.state)
+    console.log(this.props)
 
     return(
       <div>
+        {this.props.songDiv}
         <form >
           <input type='text'name='comment_body'/>
           <input type='submit'/>

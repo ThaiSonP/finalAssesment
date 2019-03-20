@@ -35,8 +35,8 @@ export const DisplaySongs = (props)=>{
         </div>
       )
     return(
-      <CommentSection/>
-      [songDiv]
+      <CommentSection songDiv={songDiv} key={i}/>
+
     )
   })
 
