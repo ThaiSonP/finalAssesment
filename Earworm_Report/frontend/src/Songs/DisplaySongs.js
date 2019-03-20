@@ -1,22 +1,23 @@
-import React from 'react'
+import React,{Component} from 'react'
 import {Link} from 'react-router-dom'
 import '../styling/DisplaySongs.css'
-// import axios from 'axios'
+// import CommentSection from './CommentSection'
 
+// class DisplaySongs extends Component{
+//   constructor(props){
+//     super(props)
+//     this.state={
+//       songs:props.songs
+//     }
+//   }
+//
+// render(){
 export const DisplaySongs = (props)=>{
   const {songs}=props
-  let comments = []
 
   if(songs){
   const DisplayFunction = songs.map((el,i)=>{
-
-    // comments =
-    // axios.get(`/comments/song/${el.id}`)
-    // .then(result=>{
-    //   console.log(result.data.comments)
-    // })
     return(
-
       <div className ="individualSong" key={i}>
         <div className = 'albumCover'>
           <Link to={`/songs/${el.id}`}>
@@ -41,5 +42,5 @@ export const DisplaySongs = (props)=>{
     </div>
   )}
 }
-
+// }
 export default DisplaySongs

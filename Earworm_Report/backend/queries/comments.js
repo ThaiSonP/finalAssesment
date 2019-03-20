@@ -20,7 +20,8 @@ const getCommentsBySong = (req,res)=>{
   db.any(
     'SELECT * '+
     'FROM comments '+
-    'WHERE song_id = $1 ',id
+    'WHERE song_id = $1 '+
+    'ORDER BY comments.id DESC',id
   )
   .then(results=>{
     res.status(200)

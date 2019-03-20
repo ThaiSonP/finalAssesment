@@ -51,12 +51,12 @@ class PostSongs extends Component{
       genre_id:null
     })
 
-    await this.getGenres()
+
   }
 
   render(){
     const {user_id,currentUser,genres}=this.state
-    console.log(this.state)
+    // console.log(this.state)
 
     if(user_id===currentUser){
       return(
