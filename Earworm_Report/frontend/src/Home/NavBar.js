@@ -1,3 +1,5 @@
+// I recommend using NavLink.
+
 import React from 'react'
 import {Link} from 'react-router-dom'
 import '../styling/NavBar.css'

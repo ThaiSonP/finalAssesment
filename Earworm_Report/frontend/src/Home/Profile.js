@@ -1,3 +1,9 @@
+// This page is missing all specified functionality and display.
+// Please fix.
+
+// Overall though, good job. Looking forward to seeing the final 
+// result.
+
 import React,{Component} from 'react'
 import PostSongs from './PostSongs'
 import axios from 'axios'
