@@ -2,7 +2,6 @@ import React,{Component} from 'react'
 import axios from 'axios'
 import {Link} from 'react-router-dom'
 import '../styling/comments.css'
-import DisplayComments from './DisplayComments'
 
 class CommentSection extends Component{
   constructor (props){
@@ -16,7 +15,7 @@ class CommentSection extends Component{
   }
 
   getComments = ()=>{
-    axios.get(`comments/song/${this.state.song_id}`)
+    axios.get(`/comments/song/${this.state.song_id}`)
     .then(response=>{
       // console.log(response.data.comments)
       this.setState({
@@ -35,10 +34,13 @@ class CommentSection extends Component{
     this.getComments()
   }
 
-
+  submitComment=async(e)=>{
+    const{comment_body,user_id,song_id}=this.state
+    axios.post('/comments')
+  }
 
   render(){
-    console.log(this.state)
+    // console.log(this.state)
     const {comments}=this.state
 
     const DisplayFunction = comments.map((el,i)=>{

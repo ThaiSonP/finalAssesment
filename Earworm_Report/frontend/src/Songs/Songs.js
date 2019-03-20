@@ -56,9 +56,10 @@ class Songs extends Component {
 
   render (){
     const {filteredSongs}=this.state
-    console.log(this.state)
+    // console.log(this.state)
     return(
       <div className = 'songs'>
+        Search by title: <br/>
         <form onChange={this.handleChange} onSubmit={this.handleSubmit}>
           <input type='text'name='selected'/>
           <input type = "submit" />

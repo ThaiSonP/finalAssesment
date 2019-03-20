@@ -16,10 +16,7 @@ class Profile extends Component {
 
   componentDidMount(){
     const {currentUser}=this.state
-    // axios.get(`/users/${currentUser}`)
-    // .then(result=>{
-    //   console.log(result.data.user)
-    // })
+
     axios.get(`/songs/user/${currentUser}`)
     .then(result=>{
       this.setState({
