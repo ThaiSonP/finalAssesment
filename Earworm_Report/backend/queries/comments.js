@@ -20,6 +20,8 @@ const getCommentsBySong = (req,res)=>{
   db.any(
     'SELECT * '+
     'FROM comments '+
+    'JOIN users '+
+    'ON comments.user_id = users.id '+
     'WHERE song_id = $1 '+
     'ORDER BY comments.id DESC',id
   )

@@ -1,7 +1,7 @@
 import React,{Component} from 'react'
 import axios from 'axios'
 import {Link} from 'react-router-dom'
-import '../styling/DisplaySongs.css'
+import '../styling/comments.css'
 import DisplayComments from './DisplayComments'
 
 class CommentSection extends Component{
@@ -41,10 +41,20 @@ class CommentSection extends Component{
     console.log(this.state)
     const {comments}=this.state
 
+    const DisplayFunction = comments.map((el,i)=>{
+      return(
+        <div className='singleComment' key={i}>
+          {el.comment_body}<br/>
+          By: <Link to={`/user/${el.user_id}`}>{el.username} <br/></Link>
+        </div>
+      )
+    })
+
     return(
-      <div>
-      
+      <div className= 'comments'>
+
         {this.props.songDiv}
+        {DisplayFunction}
         <form >
           <input type='text'name='comment_body'/>
           <input type='submit'/>
