@@ -3,15 +3,6 @@ import {Link} from 'react-router-dom'
 import '../styling/DisplaySongs.css'
 import CommentSection from './CommentSection'
 
-// class DisplaySongs extends Component{
-//   constructor(props){
-//     super(props)
-//     this.state={
-//       songs:props.songs
-//     }
-//   }
-//
-// render(){
 export const DisplaySongs = (props)=>{
   const {songs}=props
 
@@ -35,8 +26,7 @@ export const DisplaySongs = (props)=>{
         </div>
       )
     return(
-      <CommentSection songDiv={songDiv} key={i}/>
-
+      <CommentSection songDiv={songDiv} key={i} songid={el.id}/>
     )
   })
 
