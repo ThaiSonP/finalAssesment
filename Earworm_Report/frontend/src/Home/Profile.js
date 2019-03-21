@@ -9,10 +9,10 @@ class Profile extends Component {
     this.state={
       loggedInUser:props.user,
       currentUser:+props.match.params.id,
-      display:true,
       songs:[],
       favorites:[],
-      selected:[]
+      selected:[],
+      display:true
     }
   }
 
@@ -49,19 +49,20 @@ class Profile extends Component {
     const{favorites}=this.state
 
     await this.setState({
-        selected:favorites
+        selected:favorites,
+        display:false
       })
 
   }
 
 
   render (){
-    const{loggedInUser,currentUser,selected}=this.state
+    const{loggedInUser,currentUser,selected,display}=this.state
     console.log(this.state)
 
     return(
       <div>
-        <PostSongs loggedInUser={loggedInUser}currentUser={currentUser}/>
+        <PostSongs loggedInUser={loggedInUser}currentUser={currentUser} display={display}/>
         <button onClick={this.postedButton}>Posted</button>
         <button onClick={this.favoriteButton}>Favorites</button>
         <DisplaySongs songs={selected} user={loggedInUser}/>

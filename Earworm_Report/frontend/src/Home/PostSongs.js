@@ -11,7 +11,8 @@ class PostSongs extends Component{
       title:null,
       img_url:null,
       user_id:props.loggedInUser,
-      genre_id:0
+      genre_id:0,
+      display: props.display,
     }
   }
 
@@ -55,10 +56,10 @@ class PostSongs extends Component{
   }
 
   render(){
-    const {user_id,currentUser,genres}=this.state
+    const {user_id,currentUser,genres,display}=this.state
     // console.log(this.state)
 
-    if(user_id===currentUser){
+    if(display && user_id===currentUser){
       return(
         <div>
           Add New Song

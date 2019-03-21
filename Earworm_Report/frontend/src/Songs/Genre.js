@@ -59,10 +59,10 @@ class Genre extends Component {
 
   render (){
     const{songs,genres,user}=this.state
-      console.log(this.state)
+
     return(
       <div className = 'songs'>
-        Choose a genre: <br/>
+        Filter by genre: <br/>
       <form onChange={this.handleChange} onSubmit={this.handleSubmit} name='selected'>
           <select >
             <option value={null}> </option>
