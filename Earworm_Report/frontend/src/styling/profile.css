@@ -1,0 +1,33 @@
+.profileContainer{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 80%;
+  align-items: center;
+}
+
+.buttons{
+  width: 80%;
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: row;
+}
+
+.Favorites{
+  background-color: grey;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 80%
+
+}
+
+.Posted{
+  background-color: orange;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 80%
+}

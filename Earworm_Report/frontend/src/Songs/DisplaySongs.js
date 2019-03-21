@@ -16,6 +16,7 @@ export const DisplaySongs = (props)=>{
               </Link>
             </div>
             <div className= 'songDescription'>
+              
               <p>
                 <Link to={`/songs/${el.id}`}>{el.title} <br/></Link>
                 By: <Link to={`/user/${el.user_id}`}>{el.username} <br/></Link>

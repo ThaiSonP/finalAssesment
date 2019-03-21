@@ -2,6 +2,7 @@ import React,{Component} from 'react'
 import PostSongs from './PostSongs'
 import axios from 'axios'
 import DisplaySongs from '../Songs/DisplaySongs'
+import '../styling/profile.css'
 
 class Profile extends Component {
   constructor(props){
@@ -40,7 +41,8 @@ class Profile extends Component {
     const{songs}=this.state
 
     await this.setState({
-        selected:songs
+        selected:songs,
+        display:true
       })
 
   }
@@ -61,12 +63,17 @@ class Profile extends Component {
     console.log(this.state)
 
     return(
-      <div>
-        <PostSongs loggedInUser={loggedInUser}currentUser={currentUser} display={display}/>
-        <button onClick={this.postedButton}>Posted</button>
-        <button onClick={this.favoriteButton}>Favorites</button>
-        <DisplaySongs songs={selected} user={loggedInUser}/>
-      </div>
+      <div className= 'profileContainer'>
+        <div className='buttons'>
+          <button onClick={this.postedButton}>Posted</button>
+          <button onClick={this.favoriteButton}>Favorites</button>
+        </div>
+        <div className ={this.state.display ? 'Posted':'Favorites'}>
+          <PostSongs loggedInUser={loggedInUser}currentUser={currentUser} display={display}/>
+
+          <DisplaySongs songs={selected} user={loggedInUser}/>
+        </div>
+    </div>
     )
   }
 }

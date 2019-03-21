@@ -74,7 +74,7 @@ class CommentSection extends Component{
         {DisplayFunction}
         <form onChange={this.handleChange}  onSubmit={this.submitComment}>
           <input type='text'name='comment_body'/>
-          <input type='submit'/>
+          <button type='submit'>Add Comment</button>
         </form >
 
       </div>

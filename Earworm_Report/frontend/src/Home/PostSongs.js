@@ -59,9 +59,9 @@ class PostSongs extends Component{
     const {user_id,currentUser,genres,display}=this.state
     // console.log(this.state)
 
-    if(display && user_id===currentUser){
+    if(display && user_id===currentUser ){
       return(
-        <div>
+        <div className= 'addSong'>
           Add New Song
           <form onChange = {this.handleChange} onSubmit={this.submitSong}>
             <input type='text' placeholder='title' name='title'/>
