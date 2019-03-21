@@ -36,7 +36,23 @@ class CommentSection extends Component{
 
   submitComment=async(e)=>{
     const{comment_body,user_id,song_id}=this.state
-    axios.post('/comments')
+
+    e.preventDefault()
+
+    await axios.post('/comments',{
+      comment_body:comment_body,
+      user_id:user_id,
+      song_id:song_id
+    })
+    .then(response=>{
+      console.log(response.data.message)
+    })
+
+    await this.setState({
+      comment_body:null
+    })
+
+    await this.getComments()
   }
 
   render(){
@@ -57,7 +73,7 @@ class CommentSection extends Component{
 
         {this.props.songDiv}
         {DisplayFunction}
-        <form onChange={this.handleChange} >
+        <form onChange={this.handleChange}  onSubmit={this.submitComment}>
           <input type='text'name='comment_body'/>
           <input type='submit'/>
         </form >
