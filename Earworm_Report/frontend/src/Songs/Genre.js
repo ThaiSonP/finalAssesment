@@ -49,20 +49,26 @@ class Genre extends Component {
       selected:parseInt(e.target.value)
     })
 
-    this.filterSongs()
+  }
+
+  handleSubmit = async(e)=>{
+    await e.preventDefault()
+    await this.filterSongs()
+
   }
 
   render (){
     const{songs,genres,user}=this.state
-      // console.log(this.state)
+      console.log(this.state)
     return(
       <div className = 'songs'>
         Choose a genre: <br/>
-        <form onChange={this.handleChange} name='selected'>
+      <form onChange={this.handleChange} onSubmit={this.handleSubmit} name='selected'>
           <select >
             <option value={null}> </option>
             <GenreOptions genres={genres}/>
           </select>
+          <input type="submit"/>
         </form>
         <DisplaySongs songs={songs} user={user}/>
       </div>
