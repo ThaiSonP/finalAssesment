@@ -4,7 +4,7 @@ import '../styling/DisplaySongs.css'
 import CommentSection from './CommentSection'
 
 export const DisplaySongs = (props)=>{
-  const {songs}=props
+  const {songs,user}=props
 
   if(songs){
   const DisplayFunction = songs.map((el,i)=>{
@@ -26,7 +26,7 @@ export const DisplaySongs = (props)=>{
         </div>
       )
     return(
-      <CommentSection songDiv={songDiv} key={i} songid={el.id}/>
+      <CommentSection songDiv={songDiv} key={i} songid={el.id} user={user}/>
     )
   })
 

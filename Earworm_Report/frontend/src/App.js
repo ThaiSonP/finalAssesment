@@ -25,8 +25,12 @@ class App extends Component {
         <NavBar loggedInUser={loggedInUser}/>
         <Switch>
           <Route exact path= '/' component={HomePage}/>
-          <Route exact path= '/songs' component={Songs}/>
-          <Route exact path = '/songs/bypop' component={Popularity}/>
+          <Route exact path= '/songs'
+            render={(props) => <Songs{...props} user={loggedInUser}/>}
+            />
+          <Route exact path = '/songs/bypop'
+            render={(props) => <Popularity{...props} user={loggedInUser}/>}
+            />
           <Route exact path = '/songs/bygenre'
             render={(props) => <Genre{...props} user={loggedInUser}/>}
             />

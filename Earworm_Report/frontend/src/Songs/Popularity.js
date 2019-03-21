@@ -7,7 +7,8 @@ class Popularity extends Component {
   constructor(props){
     super(props)
     this.state={
-      songs:[]
+      songs:[],
+      user:props.user
     }
   }
 
@@ -21,11 +22,11 @@ class Popularity extends Component {
   }
 
   render (){
-    const {songs}=this.state
+    const {songs,user}=this.state
     // console.log(songs)
     return(
       <div className = 'songs'>
-        <DisplaySongs songs={songs}/>
+        <DisplaySongs songs={songs} user={user}/>
       </div>
     )
   }

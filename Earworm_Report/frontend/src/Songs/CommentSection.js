@@ -9,7 +9,7 @@ class CommentSection extends Component{
     this.state={
       song_id:props.songid,
       comment_body:'',
-      user_id:null,
+      user_id:props.user,
       comments:[],
     }
   }
@@ -26,7 +26,7 @@ class CommentSection extends Component{
 
   handleChange = (e)=>{
     this.setState({
-      [e.target.name]:e.taget.value
+      [e.target.name]:e.target.value
     })
   }
 
@@ -40,7 +40,7 @@ class CommentSection extends Component{
   }
 
   render(){
-    // console.log(this.state)
+    console.log(this.state)
     const {comments}=this.state
 
     const DisplayFunction = comments.map((el,i)=>{
@@ -57,7 +57,7 @@ class CommentSection extends Component{
 
         {this.props.songDiv}
         {DisplayFunction}
-        <form >
+        <form onChange={this.handleChange} >
           <input type='text'name='comment_body'/>
           <input type='submit'/>
         </form >

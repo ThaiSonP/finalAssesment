@@ -9,7 +9,8 @@ class Songs extends Component {
     this.state={
       songs:[],
       filteredSongs:[],
-      selected:''
+      selected:'',
+      user:props.user
     }
   }
 
@@ -55,8 +56,8 @@ class Songs extends Component {
 
 
   render (){
-    const {filteredSongs}=this.state
-    // console.log(this.state)
+    const {filteredSongs,user}=this.state
+    console.log(user)
     return(
       <div className = 'songs'>
         Search by title: <br/>
@@ -64,7 +65,7 @@ class Songs extends Component {
           <input type='text'name='selected'/>
           <input type = "submit" />
         </form>
-        <DisplaySongs songs={filteredSongs}/>
+        <DisplaySongs songs={filteredSongs} user={user}/>
       </div>
     )
   }

@@ -8,6 +8,7 @@ class Genre extends Component {
   constructor(props){
     super(props)
     this.state={
+      user:props.user,
       genres:[],
       songs:[],
       selected:null
@@ -52,7 +53,7 @@ class Genre extends Component {
   }
 
   render (){
-    const{songs,genres}=this.state
+    const{songs,genres,user}=this.state
       // console.log(this.state)
     return(
       <div className = 'songs'>
@@ -62,7 +63,7 @@ class Genre extends Component {
             <GenreOptions genres={genres}/>
           </select>
         </form>
-        <DisplaySongs songs={songs}/>
+        <DisplaySongs songs={songs} user={user}/>
       </div>
     )
   }
