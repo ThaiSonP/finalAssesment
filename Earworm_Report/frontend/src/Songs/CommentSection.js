@@ -17,7 +17,6 @@ class CommentSection extends Component{
   getComments = ()=>{
     axios.get(`/comments/song/${this.state.song_id}`)
     .then(response=>{
-      // console.log(response.data.comments)
       this.setState({
         comments:response.data.comments
       })
@@ -56,7 +55,7 @@ class CommentSection extends Component{
   }
 
   render(){
-    console.log(this.state)
+    // console.log(this.state)
     const {comments}=this.state
 
     const DisplayFunction = comments.map((el,i)=>{

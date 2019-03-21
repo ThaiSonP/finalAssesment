@@ -23,6 +23,13 @@ class Profile extends Component {
         songs:result.data.songs
       })
     })
+
+    axios.get(`/favorites/user/${currentUser}`)
+    .then(result=>{
+      this.setState({
+        favorites:result.data.favorites
+      })
+    })
   }
 
   render (){

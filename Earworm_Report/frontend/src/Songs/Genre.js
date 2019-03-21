@@ -57,6 +57,7 @@ class Genre extends Component {
       // console.log(this.state)
     return(
       <div className = 'songs'>
+        Choose a genre: <br/>
         <form onChange={this.handleChange} name='selected'>
           <select >
             <option value={null}> </option>

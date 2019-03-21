@@ -36,7 +36,7 @@ const getFavoritesBySong = (req,res)=>{
 const getFavoritesByUser = (req,res)=>{
   const id = req.params.id
   db.any(
-    'SELECT songs.id, songs.title,songs.genre_id,songs.img_url,songs.user_id,genres.genre_name, USERs.username, COUNT (favorites.song_id) '+
+    'SELECT songs.id, songs.title,songs.genre_id,songs.img_url,songs.user_id,genres.genre_name, USERs.username, favorites.id , COUNT (favorites.song_id) '+
     'FROM songs '+
     'JOIN genres '+
     'ON songs.genre_id = genres.id '+
@@ -44,9 +44,9 @@ const getFavoritesByUser = (req,res)=>{
     'ON songs.user_id = users.id '+
     'LEFT JOIN favorites '+
     'ON songs.id = favorites.song_id '+
-    'WHERE songs.user_id = $1 ' +
-    'GROUP BY songs.id, songs.title,songs.genre_id,songs.img_url,songs.user_id,genres.genre_name, USERs.username '+
-    'ORDER BY songs.id DESC ',id
+    'WHERE favorites.user_id = $1 ' +
+    'GROUP BY songs.id, songs.title,songs.genre_id,songs.img_url,songs.user_id,genres.genre_name, USERs.username, favorites.id '+
+    'ORDER BY favorites.id DESC ',id
   )
   .then(results=>{
     res.status(200)
