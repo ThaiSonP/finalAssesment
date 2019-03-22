@@ -11,7 +11,9 @@ class CommentSection extends Component{
       comment_body:'',
       user_id:props.user,
       comments:[],
-      display:false
+      display:true,
+      favorites:[],
+      currentFavorite:null
     }
   }
 
@@ -24,12 +26,29 @@ class CommentSection extends Component{
     })
   }
 
-  getFavorites = ()=>{
+  getFavorites = async ()=>{
+    const {song_id,user_id,favorites,currentFavorite}=this.state
     // this is going to be an axios call for this specific song
     // return an object if this song && user are both correct then we
     // can either un-favorite or make a post request to change the button and funcionats
-    axios.get(`/favorites/`)
+    await axios.get(`/favorites/song/${song_id}`)
+    .then(results=>{
+      this.setState({
+        favorites:results.data.favorites
+      })
+    })
+
+    const current = favorites.find(el=>{
+      return (el.user_id===user_id)
+    })
+
+    await this.setState({
+      currentFavorite: current
+    })
+
   }
+
+
 
   handleChange = (e)=>{
     this.setState({
@@ -39,13 +58,13 @@ class CommentSection extends Component{
 
   componentDidMount(){
     this.getComments()
+    this.getFavorites()
   }
 
   submitComment=async(e)=>{
     const{comment_body,user_id,song_id}=this.state
 
     e.preventDefault()
-
     await axios.post('/comments',{
       comment_body:comment_body,
       user_id:user_id,
@@ -54,16 +73,21 @@ class CommentSection extends Component{
     .then(response=>{
       console.log(response.data.message)
     })
-
     await this.setState({
       comment_body:null
     })
-
     await this.getComments()
   }
 
+  testButton=()=>{
+    const {display}=this.state
+    this.setState({
+      display: !display
+    })
+  }
+
   render(){
-    // console.log(this.state)
+    console.log(this.state.currentFavorite)
     const {comments}=this.state
 
     const DisplayFunction = comments.map((el,i)=>{
@@ -80,7 +104,9 @@ class CommentSection extends Component{
 
         {this.props.songDiv}
 
-        <button>{this.state.display ? 'Favorite':'Unfavorite'}</button>
+        <button onClick={this.testButton}>
+          {this.state.display ? 'Favorite':'Unfavorite'}
+        </button>
         {DisplayFunction}
         <form onChange={this.handleChange}  onSubmit={this.submitComment}>
           <input type='text'name='comment_body'/>

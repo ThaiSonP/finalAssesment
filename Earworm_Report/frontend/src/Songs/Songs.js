@@ -57,7 +57,7 @@ class Songs extends Component {
 
   render (){
     const {filteredSongs,user}=this.state
-    console.log(user)
+    // console.log(user)
     return(
       <div className = 'songs'>
         Search by title: <br/>
