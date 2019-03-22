@@ -3,9 +3,12 @@
   flex-direction: column;
   align-items: center;
   flex-wrap: wrap;
+  justify-content: flex-end;
 }
 
 .singleComment{
+  text-align: center;
   border-style: solid;
-  width: 450px; 
+  border-width: thin;
+  width: 200px;
 }

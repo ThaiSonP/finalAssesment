@@ -16,12 +16,13 @@ export const DisplaySongs = (props)=>{
               </Link>
             </div>
             <div className= 'songDescription'>
-              
+
               <p>
-                <Link to={`/songs/${el.id}`}>{el.title} <br/></Link>
+                <button>favorite</button><br/>
+                {el.title} <br/>
                 By: <Link to={`/user/${el.user_id}`}>{el.username} <br/></Link>
-              <Link to={`/genres/${el.genre_name}`}>{el.genre_name} <br/></Link>
-              Favorites:{el.count}
+                {el.genre_name} <br/>
+                Favorites:{el.count}
             </p>
           </div>
         </div>
