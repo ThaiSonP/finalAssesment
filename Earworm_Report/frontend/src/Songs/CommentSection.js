@@ -11,6 +11,7 @@ class CommentSection extends Component{
       comment_body:'',
       user_id:props.user,
       comments:[],
+      display:false
     }
   }
 
@@ -21,6 +22,13 @@ class CommentSection extends Component{
         comments:response.data.comments
       })
     })
+  }
+
+  getFavorites = ()=>{
+    // this is going to be an axios call for this specific song
+    // return an object if this song && user are both correct then we
+    // can either un-favorite or make a post request to change the button and funcionats
+    axios.get(`/favorites/`)
   }
 
   handleChange = (e)=>{
@@ -71,6 +79,8 @@ class CommentSection extends Component{
       <div className= 'comments'>
 
         {this.props.songDiv}
+
+        <button>{this.state.display ? 'Favorite':'Unfavorite'}</button>
         {DisplayFunction}
         <form onChange={this.handleChange}  onSubmit={this.submitComment}>
           <input type='text'name='comment_body'/>

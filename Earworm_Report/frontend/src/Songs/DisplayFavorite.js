@@ -3,7 +3,7 @@ import React from 'react'
 // import '../styling/DisplaySongs.css'
 // import axios from 'axios'
 
-export const DisplayComments = (props)=>{
+export const DisplayFavorite = (props)=>{
   // const {comments}=props
   // console.log(songs)
 
@@ -25,4 +25,4 @@ export const DisplayComments = (props)=>{
   // }
 }
 
-export default DisplayComments
+export default DisplayFavorite

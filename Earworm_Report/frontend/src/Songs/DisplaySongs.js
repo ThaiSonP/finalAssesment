@@ -2,6 +2,7 @@ import React from 'react'
 import {Link} from 'react-router-dom'
 import '../styling/DisplaySongs.css'
 import CommentSection from './CommentSection'
+import DisplayFavorite from './DisplayFavorite'
 
 export const DisplaySongs = (props)=>{
   const {songs,user}=props
@@ -18,7 +19,7 @@ export const DisplaySongs = (props)=>{
             <div className= 'songDescription'>
 
               <p>
-                <button>favorite</button><br/>
+                
                 {el.title} <br/>
                 By: <Link to={`/user/${el.user_id}`}>{el.username} <br/></Link>
                 {el.genre_name} <br/>
