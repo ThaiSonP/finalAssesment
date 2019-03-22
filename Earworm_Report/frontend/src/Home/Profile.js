@@ -13,7 +13,8 @@ class Profile extends Component {
       songs:[],
       favorites:[],
       selected:[],
-      display:true
+      display:true,
+      profileName:''
     }
   }
 
@@ -24,14 +25,15 @@ class Profile extends Component {
     .then(result=>{
       this.setState({
         songs:result.data.songs,
-        selected:result.data.songs
+        selected:result.data.songs,
+        profileName:result.data.songs[0].username
       })
     })
 
      axios.get(`/favorites/user/${currentUser}`)
     .then(result=>{
       this.setState({
-        favorites:result.data.favorites
+        favorites:result.data.favorites,
       })
     })
 
@@ -64,6 +66,7 @@ class Profile extends Component {
 
     return(
       <div className= 'profileContainer'>
+          <h1>{this.state.profileName}</h1><br/>
         <div className='buttons'>
           <button onClick={this.postedButton}>Posted</button>
           <button onClick={this.favoriteButton}>Favorites</button>

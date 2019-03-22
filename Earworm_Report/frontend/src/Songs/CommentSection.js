@@ -87,7 +87,7 @@ class CommentSection extends Component{
   }
 
   render(){
-    console.log(this.state.currentFavorite)
+    // console.log(this.state.currentFavorite)
     const {comments}=this.state
 
     const DisplayFunction = comments.map((el,i)=>{
