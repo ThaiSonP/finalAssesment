@@ -13,7 +13,7 @@ class CommentSection extends Component{
       comments:[],
       display:true,
       favorites:[],
-      currentFavorite:null
+      favorited:null
     }
   }
 
@@ -27,7 +27,7 @@ class CommentSection extends Component{
   }
 
   getFavorites = async ()=>{
-    const {song_id,user_id,favorites,currentFavorite}=this.state
+    const {song_id,user_id,favorites,favorited}=this.state
     // this is going to be an axios call for this specific song
     // return an object if this song && user are both correct then we
     // can either un-favorite or make a post request to change the button and funcionats
@@ -37,17 +37,38 @@ class CommentSection extends Component{
         favorites:results.data.favorites
       })
     })
-
-    const current = favorites.find(el=>{
-      return (el.user_id===user_id)
-    })
-
-    await this.setState({
-      currentFavorite: current
-    })
-
   }
 
+  checkFavorites=()=>{
+    const {song_id,user_id,favorites,favorited}=this.state
+    // console.log(favorites)
+    // console.log(user_id)
+    const thing=(
+      favorites.find(el=>{
+      return  el.user_id===user_id
+      })
+    )
+    this.setState({
+      favorited:thing
+    })
+    // console.log(thing.id)
+
+    if(favorited!=null){
+      axios.delete(`/favorites/${favorited.id}`)
+      .then(result=>{
+        console.log(result.data.message)
+      })
+    }else{
+      axios.post(`/favorites`,{
+        user_id:user_id,
+        song_id:song_id
+      })
+      .then(result=>{
+        console.log(result.data.message)
+      })
+    }
+
+  }
 
 
   handleChange = (e)=>{
@@ -73,9 +94,6 @@ class CommentSection extends Component{
     .then(response=>{
       console.log(response.data.message)
     })
-    await this.setState({
-      comment_body:null
-    })
     await this.getComments()
   }
 
@@ -87,8 +105,8 @@ class CommentSection extends Component{
   }
 
   render(){
-    // console.log(this.state.currentFavorite)
-    const {comments}=this.state
+    console.log(this.state.favorited)
+    const {comments,display}=this.state
 
     const DisplayFunction = comments.map((el,i)=>{
       return(
@@ -104,8 +122,8 @@ class CommentSection extends Component{
 
         {this.props.songDiv}
 
-        <button onClick={this.testButton}>
-          {this.state.display ? 'Favorite':'Unfavorite'}
+        <button onClick={this.checkFavorites}>
+          {display ? 'Favorite':'Unfavorite'}
         </button>
         {DisplayFunction}
         <form onChange={this.handleChange}  onSubmit={this.submitComment}>
