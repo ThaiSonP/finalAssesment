@@ -13,6 +13,7 @@ import Genre from './Songs/Genre'
 
 class App extends Component {
   constructor(props){
+    // assuming the user logs in from app we would keep track of this user with 'loggedInUser'
   super(props)
   this.state={
     loggedInUser:1

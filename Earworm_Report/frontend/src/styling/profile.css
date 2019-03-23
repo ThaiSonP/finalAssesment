@@ -1,13 +1,15 @@
+<link href="https://fonts.googleapis.com/css?family=Germania+One" rel="stylesheet">
+
 .profileContainer{
+  width: 80%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  width: 80%;
-  align-items: center;
+  /* justify-content: center; */
+  /* align-items: center; */
 }
 
 .buttons{
-  width: 80%;
+  /* width: 80%; */
   display: flex;
   justify-content: flex-end;
   flex-direction: row;
@@ -19,15 +21,14 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 80%
 
 }
 
 .Posted{
+  /* width: 80%; */
   background-color: orange;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  width: 80%
+  font-family: 'Germania One', cursive;
 }
