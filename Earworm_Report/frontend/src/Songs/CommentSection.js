@@ -58,6 +58,9 @@ class CommentSection extends Component{
       .then(result=>{
         console.log(result.data.message)
       })
+      this.setState({
+        display:false
+      })
     }else{
       axios.post(`/favorites`,{
         user_id:user_id,
@@ -65,6 +68,9 @@ class CommentSection extends Component{
       })
       .then(result=>{
         console.log(result.data.message)
+      })
+      this.setState({
+        display:true
       })
     }
 
@@ -123,7 +129,7 @@ class CommentSection extends Component{
         {this.props.songDiv}
 
         <button onClick={this.checkFavorites}>
-          {display ? 'Favorite':'Unfavorite'}
+          {!display ? 'Favorite':'Unfavorite'}
         </button>
         {DisplayFunction}
         <form onChange={this.handleChange}  onSubmit={this.submitComment}>
