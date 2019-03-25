@@ -1,3 +1,7 @@
+// I still recommend using NavLink. This is better for
+// navbar navigation because it allows you to style the
+// active class so the user can see what page they're on.
+
 import React from 'react'
 import {Link} from 'react-router-dom'
 import '../styling/NavBar.css'

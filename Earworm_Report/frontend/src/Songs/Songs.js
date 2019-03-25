@@ -1,3 +1,15 @@
+// So the first thing that I notice isn't there hasn't
+// been much styling changed since my last review. This
+// is a concern. The app is not visually appealing. With
+// this type of code challenge and employer would want to see
+// styling. It's not a second thought, it's the first impression
+// that an app gives.
+// Commenting works well. Favoriting not workng anymore.. the
+// text of the button only seems to change sometimes.
+// Please clean your console.
+
+
+
 import React,{Component} from 'react'
 import axios from 'axios'
 import DisplaySongs from './DisplaySongs'

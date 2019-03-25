@@ -1,3 +1,13 @@
+// Needs a css indication of whether we're on posted or
+// favorires.
+// When I post a new song, it should trigger a rerender.
+// Button says unfavorite, but I haven't favorited. If I click it
+// and refresh it the button doesn't change but the count does.
+// I click again and the refresh, the count is now 2. But they are both me.
+
+//I go to favorites and click on a different user. The url changes
+// but the page does not rerender. 
+
 import React,{Component} from 'react'
 import PostSongs from './PostSongs'
 import axios from 'axios'
