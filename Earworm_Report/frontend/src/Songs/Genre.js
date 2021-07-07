@@ -1,3 +1,8 @@
+// Genre missing same comment and favoriting func.
+// Also, their should be a submit button next to the
+// select. The songs should not be filtered on change but
+// instead when the submit is entered. 
+
 import React,{Component} from 'react'
 import '../styling/Songs.css'
 import axios from 'axios'
